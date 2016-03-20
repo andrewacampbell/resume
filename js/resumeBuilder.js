@@ -1,5 +1,5 @@
-var name = "Andrew Campbell";
-var role = "Software Engineer";
+var name = "Andrew A. Campbell";
+var role = "SOFTWARE ENGINEER";
 
 var jobtitle = HTMLheaderRole.replace("%data%", role);
 $("#header").prepend(jobtitle);
@@ -19,7 +19,7 @@ var bio = {
     },
     "welcomeMessage": "lorem ipsum dolor sit lorem ipsum dolor sit",
     "skills": [
-        "Nerd", "PHP", "HTML", "SQL", "JS", "JQuery", "C#"
+        "Nerd", "PHP", "HTML", "MYSQL", "JS", "JQuery", "C#", "JSON", "Oracle 12c", "MSSQL", "CSS"
     ],
     "bioPic": "img/fry.jpg"
 }
@@ -48,9 +48,7 @@ var education = {
 }
 
 
-
-
-var work = {
+var work = { 
     "jobs":[
         {
             "employer"    : "Xerox",
@@ -70,9 +68,9 @@ var work = {
         {
             "employer"    : "Royal Imaging Center ",
             "position"    : "Radiographer Assist/Tech ",
-            "date"        : "June 2015 - August 2015",
+            "date"        : "March 2010 – September 2011",
             "years"       : "0.3",
-            "Description" : "•	Throughout drive into the .Net Framework, design patterns, version control, and refactoring",
+            "Description" : "• Tech assisitant and customer support",
             "team" : "Andrew Campbell"
         }
     ]
@@ -112,8 +110,14 @@ for(job in work.jobs) {
     
     var formatPosition = HTMLworkTitle.replace("%data%", work.jobs[job].position);
     
+    var formatdate = HTMLworkDates.replace("%data%", work.jobs[job].date);
+    var formatdesc = HTMLworkDescription.replace("%data%", work.jobs[job].Description);
+    
     var formatEmpTitle = formatEmp + formatPosition;
+    
     $(".work-entry:last").append(formatEmpTitle);
+    $(".work-entry:last").append(formatdate);
+    $(".work-entry:last").append(formatdesc);
     
 }
 
