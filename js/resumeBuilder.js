@@ -53,6 +53,7 @@ var work = {
         {
             "employer"    : "Xerox",
             "position"    : "Customer Care Assoc II (Tech Support)",
+            "location"    : "Montego Bay, St James",
             "date"        : "Feburary 2016 - Present",
             "years"       : "0.2",
             "Description" : "•	Trouble shoot customer Xerox machine"
@@ -60,6 +61,7 @@ var work = {
         {
             "employer"    : "MCS",
             "position"    : "Software Developer",
+            "location"    : "Kingston, Jamaica",
             "date"        : "June 2015 - August 2015",
             "years"       : "0.3",
             "Description" : "•	Throughout drive into the .Net Framework, design patterns, version control, and refactoring",
@@ -68,6 +70,7 @@ var work = {
         {
             "employer"    : "Royal Imaging Center ",
             "position"    : "Radiographer Assist/Tech ",
+            "location"    : "Savanna-La-Mar, Westmoreland",
             "date"        : "March 2010 – September 2011",
             "years"       : "0.3",
             "Description" : "• Tech assisitant and customer support",
@@ -102,24 +105,51 @@ if(bio.skills.length > 0) {
   
 }
 
+function displayWork(){
+    
+    for(job in work.jobs) {
+        $("#workExperience").append(HTMLworkStart);
 
-for(job in work.jobs) {
-    $("#workExperience").append(HTMLworkStart);
-    
-    var formatEmp = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-    
-    var formatPosition = HTMLworkTitle.replace("%data%", work.jobs[job].position);
-    
-    var formatdate = HTMLworkDates.replace("%data%", work.jobs[job].date);
-    var formatdesc = HTMLworkDescription.replace("%data%", work.jobs[job].Description);
-    
-    var formatEmpTitle = formatEmp + formatPosition;
-    
-    $(".work-entry:last").append(formatEmpTitle);
-    $(".work-entry:last").append(formatdate);
-    $(".work-entry:last").append(formatdesc);
-    
+        var formatEmp = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+
+        var formatPosition = HTMLworkTitle.replace("%data%", work.jobs[job].position);
+
+        var formatdate = HTMLworkDates.replace("%data%", work.jobs[job].date);
+        var formatdesc = HTMLworkDescription.replace("%data%", work.jobs[job].Description);
+
+        var formatEmpTitle = formatEmp + formatPosition;
+
+        $(".work-entry:last").append(formatEmpTitle);
+        $(".work-entry:last").append(formatdate);
+        $(".work-entry:last").append(formatdesc);
+
+    }
 }
+
+function loacationizer(workObj){
+    var locationArr = [];
+    
+    for(job in workObj.jobs){
+        var newLocation = workObj.jobs[job].location;
+        locationArr.push(newLocation);
+    }
+    
+    return locationArr;
+}
+
+function inName(name){
+    name = name.trim().split(" ");
+    name[1] = name[1].toUpperCase();
+    name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+    
+    return name[0] + " " + name[1];
+
+}
+
+$("#main").append(internationalizeButton);
+console.log(loacationizer(work));
+displayWork();
+
 
 
 
