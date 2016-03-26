@@ -84,7 +84,26 @@ var projects = {
         {
             "title" : "The Project",
             "dates" : "2014",
-            "description" : "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum"
+            "description" : "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
+            "images"       : "img/fry.jpg"
+        },
+        {
+            "title" : "The Project 2",
+            "dates" : "2014",
+            "description" : "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
+            "images"       : "img/fry.jpg"
+        },
+        {
+            "title" : "The Project 3",
+            "dates" : "2014",
+            "description" : "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
+            "images"       : "img/fry.jpg"
+        },
+         {
+            "title" : "The Project 4",
+            "dates" : "2014",
+            "description" : "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
+            "images"       : "img/fry.jpg"
         }
     ]
 }
@@ -126,7 +145,7 @@ function displayWork(){
     }
 }
 
-function loacationizer(workObj){
+function locationizer(workObj){
     var locationArr = [];
     
     for(job in workObj.jobs){
@@ -138,6 +157,7 @@ function loacationizer(workObj){
 }
 
 function inName(name){
+    
     name = name.trim().split(" ");
     name[1] = name[1].toUpperCase();
     name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
@@ -146,8 +166,43 @@ function inName(name){
 
 }
 
+projects.display = function() {
+    
+    for(project in projects.projects) {
+        
+        $("#projects").append(HTMLprojectStart);
+        
+        var projectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+        $(".project-entry:last").append(projectTitle);
+        
+        var projectDate = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+        $(".project-entry:last").append(projectDate);
+        
+        var projectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+        $(".project-entry:last").append(projectDescription);
+        
+        var projectImg = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+         $(".project-entry:last").append(projectImg);
+        
+        
+        
+//        if(projects.projects[project].images.length > 0) {
+//            
+//            for(img in projects.projects[project].images) {
+//                var projectimg = HTMLprojectImage.replace("%data%", projects.projects[project].images[img]);
+//                
+//                
+//                
+//                $(".project-entry:last").append(projectimg);
+//            }
+//            
+//        }
+    }   
+}
+
+projects.display();
 $("#main").append(internationalizeButton);
-console.log(loacationizer(work));
+console.log(locationizer(work));
 displayWork();
 
 
