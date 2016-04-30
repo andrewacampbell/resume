@@ -12,28 +12,28 @@ var bio = {
     "name" : "Andrew Campbell",
     "role" : "Software Engineer",
     "contacts": {
-        "mobile": "1876-5767295",
+        "mobile": "1876-576-7295",
         "email": "acampbell22@stu.ncu.edu.jm",
         "github": "andrewacampbell",
+        "twitter" : "@AndrewC32474598",
         "location": "Jamaica"
     },
     "welcomeMessage": "lorem ipsum dolor sit lorem ipsum dolor sit",
     "skills": [
-        "Nerd", "PHP", "HTML", "MYSQL", "JS", "JQuery", "C#", "JSON", "Oracle 12c", "MSSQL", "CSS"
+        "Nerd", "PHP", "HTML", "MYSQL", "JS", "JQuery", "C#", "JSON", "Oracle 12c", "MSSQL", "CSS",  "Nerd", "PHP", "HTML", "MYSQL", "JS", "JQuery", "C#", "JSON"
     ],
     "bioPic": "img/fry.jpg"
 }
 
 
-
 var education = {
     "Schools":[
         {
-            "name"  : "Northern Caribbean Universtiy",
+            "name"  : "Northern Caribbean Universtiy - BSc",
             "years" : "2011-2015",
-            "city"  : "Manchester",
+            "location"  : "Jamaica",
             "Url"   : "http://www.ncu.edu.jm",
-            "Major" : ["Computer Science"]
+            "Major" : "Computer Science (Hons) Programming emphasis"
         }
     ],
     "onlineCourses":[
@@ -43,7 +43,6 @@ var education = {
             "date"   : "2016",
             "url"    : "www.udacity.com"
         }
-        
     ]  
 }
 
@@ -53,57 +52,56 @@ var work = {
         {
             "employer"    : "Xerox",
             "position"    : "Customer Care Assoc II (Tech Support)",
-            "location"    : "Montego Bay, St James",
-            "date"        : "Feburary 2016 - Present",
+            "location"    : "Jamaica",
+            "date"        : "Feburary 2016 - Present",  
             "years"       : "0.2",
-            "Description" : "•	Trouble shoot customer Xerox machine"
+            "Description" : "Trouble shoot customer Xerox machine"
         },
         {
             "employer"    : "MCS",
             "position"    : "Software Developer",
-            "location"    : "Kingston, Jamaica",
+            "location"    : "Jamaica",
             "date"        : "June 2015 - August 2015",
             "years"       : "0.3",
-            "Description" : "•	Throughout drive into the .Net Framework, design patterns, version control, and refactoring",
+            "Description" : "Throughout drive into the .Net Framework, design patterns, version control, and refactoring",
             "team" : "Andrew Campbell"
         },
         {
             "employer"    : "Royal Imaging Center ",
             "position"    : "Radiographer Assist/Tech ",
-            "location"    : "Savanna-La-Mar, Westmoreland",
+            "location"    : "Jamaica",
             "date"        : "March 2010 – September 2011",
             "years"       : "0.3",
-            "Description" : "• Tech assisitant and customer support",
+            "Description" : "•	Start and perform initial scans on machines in the mornings. •	Perform updates on computer.•	Help patients get ready for their examinations, making sure they are in their examination outfits and that they have perform their pre-examination procedures. •	Process mammogram films in dark room. •	liaise with Doctors and Radiographers to ensure urgent reports are handle first",
             "team" : "Andrew Campbell"
         }
     ]
 }
-
 var projects = {
     "projects" : [
         {
-            "title" : "The Project",
+            "title" : "Patient Time tracker",
             "dates" : "2014",
-            "description" : "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
-            "images"       : "img/fry.jpg"
+            "description" : "Developed a desktop for a radiology center that track time for patient registration, length of procedure, and the time taken for each procedure. It also tracks staff info, and it is able to print reports. This project uses Visual Basic, Access, Visual studio 2013. Single Project",
+            "images"       : ["img/radio1.png", "img/radio2.png"]
         },
         {
-            "title" : "The Project 2",
+            "title" : "Language Learneri",
             "dates" : "2014",
-            "description" : "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
-            "images"       : "img/fry.jpg"
+            "description" : "Developed a Windows Phone app that teaches basic Japanese, through lessons which the can take to learn the basic words and see how sentences are form, the user is also able to listen to audio of words and sentences. The app also has a text to speech translator.  – A (Tools: Visual studio 2013 and C#) (2014). Single Project",
+            "images"       : ["img/fry.jpg", "img/bird.jpg"]
         },
         {
             "title" : "The Project 3",
             "dates" : "2014",
             "description" : "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
-            "images"       : "img/fry.jpg"
+            "images"       : ["img/bird.jpg"]
         },
          {
             "title" : "The Project 4",
             "dates" : "2014",
             "description" : "Lorem ipsum lorem ipsum Lorem ipsum lorem ipsum",
-            "images"       : "img/fry.jpg"
+            "images"       : ["img/fry.jpg"]
         }
     ]
 }
@@ -113,6 +111,25 @@ var projects = {
 
 //$("#main").append(education.name);
 
+
+var projectPic = HTMLbioPic.replace("%data%",bio.bioPic);
+$("#header").append(projectPic);
+
+var myMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+$("#topContacts").append(myMobile);
+
+var myEmail = HTMLemail.replace("%data%", bio.contacts.email);
+$("#topContacts").append(myEmail);
+
+var myGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+$("#topContacts").append(myGithub);
+
+var myTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+$("#topContacts").append(myTwitter);
+
+var myLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+$("#topContacts").append(myLocation);
+    
 var i = bio.skills.length;
 
 if(bio.skills.length > 0) {
@@ -165,7 +182,26 @@ function inName(name){
     return name[0] + " " + name[1];
 
 }
-
+education.display = function() {
+    for(unit in education.Schools) {
+        $("#education").append(HTMLschoolStart);
+        
+        var eduName = HTMLschoolName.replace("%data%", education.Schools[unit].name);
+        $(".education-entry:last").append(eduName);
+        
+        //var eduDegree = HTMLschoolMajor.replace("%data%", ) 
+        
+        var eduDate     = HTMLschoolDates.replace("%data%", education.Schools[unit].years);
+        $(".education-entry:last").append(eduDate);
+             
+        var eduDegree   = HTMLschoolMajor.replace("%data%", education.Schools[unit].Major);
+        $(".education-entry").append(eduDegree);
+        
+        var eduLocation = HTMLschoolLocation.replace("%data%", education.Schools[unit].location);
+        $(".education-entry:last").append(eduLocation);
+       
+    }
+}
 projects.display = function() {
     
     for(project in projects.projects) {
@@ -181,25 +217,27 @@ projects.display = function() {
         var projectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
         $(".project-entry:last").append(projectDescription);
         
-        var projectImg = HTMLprojectImage.replace("%data%", projects.projects[project].images);
-         $(".project-entry:last").append(projectImg);
+//        var projectImg = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+//         $(".project-entry:last").append(projectImg);
         
         
         
-//        if(projects.projects[project].images.length > 0) {
-//            
-//            for(img in projects.projects[project].images) {
-//                var projectimg = HTMLprojectImage.replace("%data%", projects.projects[project].images[img]);
-//                
-//                
-//                
-//                $(".project-entry:last").append(projectimg);
-//            }
-//            
-//        }
+        if(projects.projects[project].images.length > 0) {
+            
+            for(img in projects.projects[project].images) {
+                var projectimg = HTMLprojectImage.replace("%data%", projects.projects[project].images[img]);
+                
+                
+                
+                $(".project-entry:last").append(projectimg);
+            }
+            
+        }
     }   
 }
 
+//$("#mapDiv").append(googleMap);
+education.display();
 projects.display();
 $("#main").append(internationalizeButton);
 console.log(locationizer(work));
